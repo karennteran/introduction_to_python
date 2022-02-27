@@ -1,4 +1,12 @@
-from turtle import *
+import turtle
+# from turtle import update
+# from turtle import clear
+# from turtle import ontimer
+# from turtle import hideturtle
+# from turtle import tracer
+# from turtle import listen
+# from turtle import onkey
+# from turtle import done
 from random import randrange
 from freegames import square, vector
 
@@ -22,7 +30,7 @@ def move():
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
-        update()
+        turtle.update()
         return
 
     snake.append(head)
@@ -34,22 +42,22 @@ def move():
     else:
         snake.pop(0)
 
-    clear()
+    turtle.clear()
 
     for body in snake:
         square(body.x, body.y, 9, 'green')
 
     square(food.x, food.y, 9, 'red')
-    update()
-    ontimer(move, 100)
+    turtle.update()
+    turtle.ontimer(move, 100)
 
 
-hideturtle()
-tracer(False)
-listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
+turtle.hideturtle()
+turtle.tracer(False)
+turtle.listen()
+turtle.onkey(lambda: change(10, 0), 'Right')
+turtle.onkey(lambda: change(-10, 0), 'Left')
+turtle.onkey(lambda: change(0, 10), 'Up')
+turtle.onkey(lambda: change(0, -10), 'Down')
 move()
-done()
+turtle.done()
